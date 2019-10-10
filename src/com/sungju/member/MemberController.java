@@ -5,17 +5,20 @@ import java.util.Scanner;
 import com.sungju.bankService.MemberService;
 import com.sungju.bankView.BankView;
 
+
 public class MemberController {
 	private Scanner sc;
 	private MemberDAO dao;
 	private MemberService service;
 	private BankView view;
 
+
 	public MemberController() {
 		sc = new Scanner(System.in);
 		dao = new MemberDAO();
 		service = new MemberService();
 		view = new BankView();
+
 	}
 
 	public void start() {
@@ -40,11 +43,6 @@ public class MemberController {
 				break;
 			case 2:
 				dto = dao.signin(service.singin());
-				if (dto != null) {
-					System.out.println("로그인 성공");
-				} else {
-					System.out.println("로그인 실패");
-				}
 				break;
 			case 3:
 				check = !check;

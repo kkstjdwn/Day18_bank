@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.sungju.util.DBconnecter;
 
 public class MemberDAO {
@@ -25,7 +24,7 @@ public class MemberDAO {
 	}
 
 	public int signup(MemberDTO dto) {
-		
+
 		try {
 			con = DBconnecter.getConnect();
 			sql = "insert into acmember values(?,?,?,?,?)";
@@ -35,11 +34,11 @@ public class MemberDAO {
 			st.setString(3, dto.getName());
 			st.setString(4, dto.getHp());
 			st.setString(5, dto.getEmail());
-			
+
 			result = st.executeUpdate();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
 		} finally {
 			try {
 				st.close();
@@ -49,23 +48,22 @@ public class MemberDAO {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return result;
 
 	}
-	
-	
+
 	public MemberDTO signin(MemberDTO dto) {
 		try {
 			con = DBconnecter.getConnect();
 			sql = "select * from acmember where id =? and pw = ? ";
 			st = con.prepareStatement(sql);
-			
+
 			st.setString(1, dto.getId());
 			st.setString(2, dto.getPw());
-			
+
 			rs = st.executeQuery();
-			
+
 			if (rs.next()) {
 				dto = new MemberDTO();
 				dto.setId(rs.getString(1));
@@ -73,25 +71,31 @@ public class MemberDAO {
 				dto.setName(rs.getString(3));
 				dto.setHp(rs.getString(4));
 				dto.setEmail(rs.getString(5));
-			}else {
+			} else {
 				dto = null;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			// e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
 				st.close();
 				con.close();
+				if (dto != null) {
+					System.out.println("로그인 성공");
+				} else {
+					System.out.println("로그인 실패");
+				}
+
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+
 		return dto;
-		
+
 	}
 
 }
