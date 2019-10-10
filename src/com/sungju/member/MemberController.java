@@ -1,7 +1,8 @@
 package com.sungju.member;
 
-import java.util.Scanner;
 
+import java.util.Scanner;
+import com.sungju.account.AccountController;
 import com.sungju.bankService.MemberService;
 import com.sungju.bankView.BankView;
 
@@ -11,6 +12,7 @@ public class MemberController {
 	private MemberDAO dao;
 	private MemberService service;
 	private BankView view;
+	private AccountController controller;
 
 
 	public MemberController() {
@@ -18,6 +20,7 @@ public class MemberController {
 		dao = new MemberDAO();
 		service = new MemberService();
 		view = new BankView();
+		this.controller = new AccountController();
 
 	}
 
@@ -43,6 +46,8 @@ public class MemberController {
 				break;
 			case 2:
 				dto = dao.signin(service.singin());
+				controller.start(dto);
+				
 				break;
 			case 3:
 				check = !check;
