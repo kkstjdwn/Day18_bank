@@ -4,17 +4,18 @@ import java.sql.Date;
 
 public class StatementDTO {
 	
-	private int statementNumber;
+	private int stateNumber;
 	private String acnumber;
 	private Date acdate;
-	private int deposit;
-	private int withdraw;
-	private int balance;
-	public int getStatementNumber() {
-		return statementNumber;
+	private long deposit;
+	private long withdraw;
+	private long balance;
+	
+	public int getStateNumber() {
+		return stateNumber;
 	}
-	public void setStatementNumber(int statementNumber) {
-		this.statementNumber = statementNumber;
+	public void setStateNumber(int stateNumber) {
+		this.stateNumber = stateNumber;
 	}
 	public String getAcnumber() {
 		return acnumber;
@@ -28,23 +29,23 @@ public class StatementDTO {
 	public void setAcdate(Date acdate) {
 		this.acdate = acdate;
 	}
-	public int getDeposit() {
+	public long getDeposit() {
 		return deposit;
 	}
-	public void setDeposit(int deposit) {
+	public void setDeposit(long deposit) {
 		this.deposit = deposit;
 	}
-	public int getWithdraw() {
+	public long getWithdraw() {
 		return withdraw;
 	}
-	public void setWithdraw(int withdraw) {
+	public void setWithdraw(long withdraw) {
 		this.withdraw = withdraw;
 	}
-	public int getBalance() {
+	public long getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(long balance) {
 		this.balance = balance;
 	}
-
+	
 }

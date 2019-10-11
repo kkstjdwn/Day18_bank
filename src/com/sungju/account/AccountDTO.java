@@ -4,7 +4,7 @@ public class AccountDTO {
 	private String id;
 	private String acname;
 	private String acnumber;
-	private int balance;
+	private long balance;
 	public String getId() {
 		return id;
 	}
@@ -23,10 +23,10 @@ public class AccountDTO {
 	public void setAcnumber(String acnumber) {
 		this.acnumber = acnumber;
 	}
-	public int getBalance() {
+	public long getBalance() {
 		return balance;
 	}
-	public void setBalance(int balance) {
+	public void setBalance(long balance) {
 		this.balance = balance;
 	}
 

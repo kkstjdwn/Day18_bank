@@ -4,14 +4,14 @@ package com.sungju.member;
 import java.util.Scanner;
 import com.sungju.account.AccountController;
 import com.sungju.bankService.MemberService;
-import com.sungju.bankView.BankView;
+
 
 
 public class MemberController {
 	private Scanner sc;
 	private MemberDAO dao;
 	private MemberService service;
-	private BankView view;
+
 	private AccountController controller;
 
 
@@ -19,7 +19,7 @@ public class MemberController {
 		sc = new Scanner(System.in);
 		dao = new MemberDAO();
 		service = new MemberService();
-		view = new BankView();
+
 		this.controller = new AccountController();
 
 	}
@@ -38,15 +38,10 @@ public class MemberController {
 			switch (choice) {
 			case 1:
 				choice = dao.signup(service.makememeber());
-				String msg = "회원가입 실패";
-				if (choice == 1) {
-					msg = "회원가입 성공";
-				}
-				view.view(msg);
 				break;
 			case 2:
 				dto = dao.signin(service.singin());
-				controller.start(dto);
+				if(dto !=null) {controller.start(dto);}
 				
 				break;
 			case 3:

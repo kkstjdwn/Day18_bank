@@ -39,6 +39,13 @@ public class MemberDAO {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// e.printStackTrace();
+			
+			if (result == 1) {
+				System.out.println("회원가입 성공");
+			}else {
+				System.out.println("회원가입 실패");
+			}
+			
 		} finally {
 			try {
 				st.close();

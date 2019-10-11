@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import com.sungju.member.MemberDTO;
 import com.sungju.util.DBconnecter;
 
-public class AcoountDAO {
+public class AccountDAO {
 	Connection con;
 	PreparedStatement st;
 	ResultSet rs;
 	String sql;
 	int result;
 	
-	public AcoountDAO() {
+	public AccountDAO() {
 	con = null;
 	st = null;
 	rs = null;
@@ -32,17 +32,18 @@ public class AcoountDAO {
 			st.setString(1, dto.getId());
 			st.setString(2, dto.getAcname());
 			st.setString(3, dto.getAcnumber());
-			st.setInt(4, dto.getBalance());
+			st.setLong(4, dto.getBalance());
 			
 			result = st.executeUpdate();
+			if (result !=0) {
+				System.out.println("계좌개설 성공");
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			if (result !=0) {
-				System.out.println("계좌개설 성공");
-			}else {
-				System.out.println("계좌개설 실패");
-			}
+			System.out.println("계좌개설 실패");
+			
 		}finally {
 			try {
 				st.close();
@@ -98,5 +99,61 @@ public class AcoountDAO {
 		
 		return ar;
 	}
+	
+	
+	public int deleteAccount(String acname) {
+		
+		try {
+			con = DBconnecter.getConnect();
+			sql = "delete mkaccount where acname = ? ";
+			st = con.prepareStatement(sql);
+			st.setString(1, acname);
+			result = st.executeUpdate();
+			if (result !=0) {
+				System.out.println("계좌 삭제 성공");
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.out.println("계좌 삭제 실패");
+		}finally {
+			try {
+				st.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
+	}
+	
+	public void updateBalance(AccountDTO dto) { //10/1
+		try {
+			con  = DBconnecter.getConnect();
+			sql = "update mkaccount set balance = ? "
+					+ "where acname = ?";
+			st = con.prepareStatement(sql);
+			st.setLong(1, dto.getBalance());
+			st.setString(2, dto.getAcname());
+			result = st.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				st.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	
 
 }
