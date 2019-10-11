@@ -36,22 +36,18 @@ public class MemberDAO {
 			st.setString(5, dto.getEmail());
 
 			result = st.executeUpdate();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			// e.printStackTrace();
-			
 			if (result == 1) {
 				System.out.println("회원가입 성공");
-			}else {
-				System.out.println("회원가입 실패");
 			}
-			
+		} catch (Exception e) {
+
+			System.out.println("회원가입 실패");
+
 		} finally {
 			try {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -82,8 +78,7 @@ public class MemberDAO {
 				dto = null;
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			// e.printStackTrace();
+			e.printStackTrace();
 		} finally {
 			try {
 				rs.close();
@@ -96,7 +91,6 @@ public class MemberDAO {
 				}
 
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

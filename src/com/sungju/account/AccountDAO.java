@@ -40,7 +40,6 @@ public class AccountDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("계좌개설 실패");
 			
@@ -49,7 +48,6 @@ public class AccountDAO {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -84,7 +82,6 @@ public class AccountDAO {
 			}
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
@@ -92,7 +89,6 @@ public class AccountDAO {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -113,7 +109,6 @@ public class AccountDAO {
 				System.out.println("계좌 삭제 성공");
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("계좌 삭제 실패");
 		}finally {
@@ -121,7 +116,6 @@ public class AccountDAO {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -140,14 +134,12 @@ public class AccountDAO {
 			result = st.executeUpdate();
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			try {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

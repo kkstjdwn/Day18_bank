@@ -65,18 +65,15 @@ public class AccountService {
 	public AccountDTO selectAC(ArrayList<AccountDTO> ar) {
 		AccountDTO dto = null;
 		if (ar.size() != 0) {
-			System.out.println("계좌명\t잔액");
-			for (AccountDTO acdto : ar) {
-				System.out.println(acdto.getAcname() + "\t" + acdto.getBalance());
-			}
-		}
-		System.out.println("거래할 계좌명을 입력하세요");
-		String acname = sc.next();
-		for (AccountDTO accountDTO : ar) {
-			if (accountDTO.getAcname().equals(acname)) {
-				dto = new AccountDTO();
-				dto = accountDTO;
-			}
+			System.out.println("계좌번호\t\t잔액");
+			for (int i = 0; i < ar.size(); i++) {
+				
+				System.out.println(i+1+". "+ar.get(i).getAcnumber() + "\t"+ar.get(i).getBalance());
+			} 
+			
+			System.out.println("거래할 계좌번호를 입력하세요");
+			int select = sc.nextInt();
+			dto = ar.get(select-1);
 		}
 
 		return dto;

@@ -44,7 +44,6 @@ public class StatementDAO {
 			}
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("거래실패");
 		} finally {
@@ -52,7 +51,6 @@ public class StatementDAO {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -83,7 +81,6 @@ public class StatementDAO {
 				ar.add(sdto);
 			}
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("일치하는 계정이 없습니다");
 		} finally {
@@ -92,7 +89,6 @@ public class StatementDAO {
 				st.close();
 				con.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
